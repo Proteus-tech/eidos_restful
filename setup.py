@@ -8,5 +8,6 @@ setup(name='restful',
       author='Proteus Technologies',
       author_email='team@proteus-tech.com',
       url='http://proteus-tech.com',
+      install_requires=['django>=1.2', 'djangorestframework>=0.3.3', 'django-serene>=0.0.5', 'django-piston==0.2.3'],
       packages=['restful',],
      )
