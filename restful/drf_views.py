@@ -15,7 +15,7 @@ class CreateModelWithFormView(CreateModelMixin, ModelView):
     """
 
     def get(self, request, *args, **kwargs):
-        if not getattr(self, 'form'):
+        if not hasattr(self, 'form'):
             raise ErrorResponse(status.HTTP_500_INTERNAL_SERVER_ERROR,
                     u'The server did not implement this view correct.')
 
