@@ -1,7 +1,7 @@
 # Django settings for sample_project project.
 import os
 
-PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+PROJECT_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)),'..')
 PROJECT_PATH_JOIN = lambda a, *p: os.path.join(PROJECT_DIR, a, *p)
 
 DEBUG = True
@@ -94,6 +94,10 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_DIRS = (
+    PROJECT_PATH_JOIN('templates'),
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -128,6 +132,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     'sample_app',
+    'restful',
     'django_nose',
 )
 
