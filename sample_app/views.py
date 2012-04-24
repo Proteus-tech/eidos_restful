@@ -2,12 +2,13 @@
 
 from restful.drf_views import CreateModelWithFormView
 
-from sample_app.form import SampleForm
-from sample_app.resources import SampleResource
+from sample_app.resources import SampleResource, NoPostFormResource, NoFormResource
 
 class SampleView(CreateModelWithFormView):
-    form = SampleForm
     resource = SampleResource
 
-class BadView(CreateModelWithFormView):
-    resource = SampleResource
+class NoPostFormView(CreateModelWithFormView):
+    resource = NoPostFormResource
+
+class NoFormView(CreateModelWithFormView):
+    resource = NoFormResource

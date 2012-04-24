@@ -15,17 +15,17 @@ class CreateModelWithFormView(CreateModelMixin, ModelView):
     """
 
     def get(self, request, *args, **kwargs):
-        if not hasattr(self, 'form'):
+        if not hasattr(self.resource, 'post_form'):
             raise ErrorResponse(status.HTTP_500_INTERNAL_SERVER_ERROR,
-                    u'The server did not implement this view correct.')
+                u'The server did not implement this view correct.')
 
         context = RequestContext(request)
         context.update({
-            'form': self.form,
+            'form': self.resource.post_form,
             'action': request.build_absolute_uri(),
             'method': 'POST',
             'id': self.get_name() + "_form",
             'submit_value': 'Submit',
-        })
+            })
 
         return render_to_response('restful/form.html', context)

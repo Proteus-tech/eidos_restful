@@ -11,7 +11,12 @@ class TestSampleView(TestCase):
         response = self.client.post('/sample_app', data={'a_field': 'abc'})
         self.assertContains(response, 'abc', status_code=201)
 
-class TestBadView(TestCase):
+class TestNoPostFormView(TestCase):
     def test_get_view(self):
-        response = self.client.get('/sample_app/bad_view')
+        response = self.client.get('/sample_app/no_post_form_view')
+        self.assertContains(response, u'The server did not implement this view correct.', status_code=500)
+
+class TestNoFormView(TestCase):
+    def test_get_view(self):
+        response = self.client.get('/sample_app/no_form_view')
         self.assertContains(response, u'The server did not implement this view correct.', status_code=500)
