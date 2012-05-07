@@ -133,6 +133,7 @@ INSTALLED_APPS = (
 
     'sample_app',
     'restful',
+    'softdelete',
     'django_nose',
 )
 
