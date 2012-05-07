@@ -36,4 +36,19 @@ class TestSampleInstanceView(TestCase):
         response = self.client.delete('/sample_app/instance/%s' % (self.instance.id+1))
         self.assertEqual(response.status_code, 404)
 
+    def test_delete_then_get_410(self):
+        self.test_delete_existing_instance_204()
+        response = self.client.get('/sample_app/instance/%s' % self.instance.id)
+        self.assertEqual(response.status_code, 410)
+
+    def test_delete_then_put_410(self):
+        self.test_delete_existing_instance_204()
+        response = self.client.put('/sample_app/instance/%s' % self.instance.id)
+        self.assertEqual(response.status_code, 410)
+
+    def test_delete_then_delete_410(self):
+        self.test_delete_existing_instance_204()
+        response = self.client.delete('/sample_app/instance/%s' % self.instance.id)
+        self.assertEqual(response.status_code, 410)
+
 
