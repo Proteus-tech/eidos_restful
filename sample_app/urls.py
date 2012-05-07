@@ -12,5 +12,5 @@ urlpatterns = patterns('',
 from sample_app.instance_views import SampleInstanceView
 
 urlpatterns += patterns('',
-    url(r'^/instance/<?id>$', SampleInstanceView.as_view())
+    url(r'^/instance/(?P<id>\d+)$', SampleInstanceView.as_view())
 )
