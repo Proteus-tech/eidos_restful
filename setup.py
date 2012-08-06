@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name='restful',
-    version='1.2.9',
+    version='1.3.0',
     description='RESTful for Django',
     author='Proteus Technologies',
     author_email='team@proteus-tech.com',
