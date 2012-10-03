@@ -14,6 +14,8 @@ class CreateModelWithFormView(CreateModelMixin, ModelView):
     that can be used to create the instance
     """
 
+    action_url = None
+
     def get(self, request, *args, **kwargs):
         if not hasattr(self.resource, 'post_form'):
             raise ErrorResponse(status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -22,7 +24,7 @@ class CreateModelWithFormView(CreateModelMixin, ModelView):
         context = RequestContext(request)
         context.update({
             'form': self.resource.post_form,
-            'action': request.build_absolute_uri(),
+            'action': request.build_absolute_uri(self.action_url),
             'method': 'POST',
             'id': self.get_name() + "_form",
             'submit_value': 'Submit',
