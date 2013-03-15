@@ -24,5 +24,9 @@ class TestNoFormView(TestCase):
 class TestExtraContextView(TestCase):
     def test_get_view(self):
         response = self.client.get('/sample_app/extra_context_view')
-        print response.content
         self.assertEquals(response.context['extra'], 'extra')
+
+class TestFormTemplateView(TestCase):
+    def test_get_view(self):
+        response = self.client.get('/sample_app/form_template_view')
+        self.assertContains(response, 'baaaraisakyang')

@@ -29,6 +29,7 @@ class CreateModelWithFormView(CreateModelMixin, ModelView):
             'id': self.get_name() + "_form",
             'submit_value': 'Submit',
             })
+
         if hasattr(self.resource, 'form_extra_context'):
             context.update(self.resource.form_extra_context)
 

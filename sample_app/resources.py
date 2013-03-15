@@ -22,3 +22,8 @@ class ExtraContextResource(Resource):
     form_extra_context = {
         'extra': 'extra'
     }
+
+class FormTemplateResource(Resource):
+    model = SampleModel
+    post_form = SampleForm
+    form_template = 'sample_template.html'
