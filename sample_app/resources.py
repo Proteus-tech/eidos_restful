@@ -15,3 +15,10 @@ class NoPostFormResource(Resource):
 
 class NoFormResource(Resource):
     model = SampleModel
+
+class ExtraContextResource(Resource):
+    model = SampleModel
+    post_form = SampleForm
+    form_extra_context = {
+        'extra': 'extra'
+    }

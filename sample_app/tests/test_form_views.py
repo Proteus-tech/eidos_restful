@@ -20,3 +20,9 @@ class TestNoFormView(TestCase):
     def test_get_view(self):
         response = self.client.get('/sample_app/no_form_view')
         self.assertContains(response, u'The server did not implement this view correct.', status_code=500)
+
+class TestExtraContextView(TestCase):
+    def test_get_view(self):
+        response = self.client.get('/sample_app/extra_context_view')
+        print response.content
+        self.assertEquals(response.context['extra'], 'extra')
